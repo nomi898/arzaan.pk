@@ -18,6 +18,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import TopBar from "./TopBar";
+import BottomHeader from "./BottomHeader";
 
 // Styled search container
 const Search = styled("div")(({ theme }) => ({
@@ -81,13 +82,13 @@ export default function PrimarySearchAppBar() {
                     value={category}
                     onChange={handleCategoryChange}
                     sx={{
-                      color: "#333",
+                      color: "grey.700",
                       fontSize: 14,
                       px: 1,
                       "& .MuiSelect-select": {
                         display: "flex",
                         alignItems: "center",
-                        py: 0.8,
+                        py: 1,
                       },
                     }}
                   >
@@ -109,7 +110,7 @@ export default function PrimarySearchAppBar() {
                   color: "white",
                   borderRadius: 0,
                   px: 4,
-                  py: 3,
+                  py: 2,
                   "&:hover": { backgroundColor: "#61ab01" },
                 }}
               >
@@ -157,6 +158,7 @@ export default function PrimarySearchAppBar() {
           </Box>
         </Toolbar>
       </AppBar>
+      <BottomHeader/>
     </Box>
   );
 }

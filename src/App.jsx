@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Header from './Components/layout/Header'
+import HeroSection from './Components/Home/HeroSection'
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       
       <Header/>
+      <HeroSection/>
     </>
   )
 }
