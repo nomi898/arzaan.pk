@@ -1,316 +1,3 @@
-// import React, { useState } from 'react';
-// import {
-//   Box,
-//   Drawer,
-//   List,
-//   ListItem,
-//   ListItemButton,
-//   ListItemIcon,
-//   ListItemText,
-//   IconButton,
-//   InputBase,
-//   Divider,
-//   Tabs,
-//   Tab,
-// } from '@mui/material';
-// import {
-//   Menu as MenuIcon,
-//   Close as CloseIcon,
-//   Search as SearchIcon,
-//   Favorite,
-//   Watch,
-//   AccountBalanceWallet,
-//   FitnessCenter,
-//   HealthAndSafety,
-//   CardTravel,
-//   AcUnit,
-//   LocalMall,
-//   Category,
-//   ChevronRight,
-//   Lightbulb,
-//   Home,
-//   Blender,
-//   Face,
-//   PhoneAndroid,
-//   Extension,
-//   RemoveRedEye,
-//   Build,
-// } from '@mui/icons-material';
-
-// const HeroSection = () => {
-//   const [mobileOpen, setMobileOpen] = useState(false);
-//   const [tabValue, setTabValue] = useState(0);
-
-//   const handleDrawerToggle = () => {
-//     setMobileOpen(!mobileOpen);
-//   };
-
-//   const handleTabChange = (event, newValue) => {
-//     setTabValue(newValue);
-//   };
-
-//   // Desktop categories
-//   const desktopCategories = [
-//     { name: 'Glasses', icon: <RemoveRedEye />, hasSubmenu: false },
-//     { name: 'Electronics', icon: <PhoneAndroid />, hasSubmenu: true },
-//     { name: 'Solar & Torches', icon: <Lightbulb />, hasSubmenu: true },
-//     { name: 'Watches', icon: <Watch />, hasSubmenu: true },
-//     { name: 'Wallets', icon: <AccountBalanceWallet />, hasSubmenu: true },
-//     { name: 'Fitness & Gym', icon: <FitnessCenter />, hasSubmenu: false },
-//     { name: 'Health & Beauty', icon: <HealthAndSafety />, hasSubmenu: false },
-//     { name: 'Travel & Outdoor', icon: <CardTravel />, hasSubmenu: false },
-//     { name: 'Winter Collection', icon: <AcUnit />, hasSubmenu: false },
-//     { name: 'Backpack & Bag', icon: <LocalMall />, hasSubmenu: false },
-//     { name: 'Other Categories', icon: <Category />, hasSubmenu: true },
-//   ];
-
-//   // Mobile menu items
-//   const mobileMenuItems = [
-//     'WINTER SALE',
-//     'ADVENTURE',
-//     'LADIES WALLETS',
-//     'GENTS WALLETS',
-//     'WATCHES',
-//     'HAIR TRIMMERS',
-//     'SMART WATCHES',
-//     'BAGS',
-//     'SOLAR LIGHTS',
-//     'TORCH LIGHTS',
-//     'FITNESS & GYM',
-//     'HOME & KITCHEN',
-//     'BEAUTY & COSMETICS',
-//     'MOBILE ACCESSORIES',
-//     'MISCELLANEOUS',
-//     'GLASSES',
-//     'TOOLKIT',
-//   ];
-
-//   const mobileCategories = [
-//     'Electronics',
-//     'Fashion',
-//     'Home & Kitchen',
-//     'Sports',
-//     'Beauty',
-//   ];
-
-//   // Desktop Sidebar
-//   const desktopSidebar = (
-//     <Box sx={{ width: 280, backgroundColor: '#fff' }}>
-//       {/* Browse Categories Header */}
-//       <Box
-//         sx={{
-//           backgroundColor: '#6bb013',
-//           color: 'white',
-//           p: 2,
-//           display: 'flex',
-//           justifyContent: 'space-between',
-//           alignItems: 'center',
-//         }}
-//       >
-//         <Box sx={{ fontWeight: 'bold', fontSize: 16 }}>Browse Categories</Box>
-//         <MenuIcon />
-//       </Box>
-
-//       {/* Category List */}
-//       <List sx={{ p: 0 }}>
-//         {desktopCategories.map((category, index) => (
-//           <React.Fragment key={category.name}>
-//             <ListItem disablePadding>
-//               <ListItemButton
-//                 sx={{
-//                   py: 1.5,
-//                   '&:hover': {
-//                     backgroundColor: '#f5f5f5',
-//                   },
-//                 }}
-//               >
-//                 <ListItemIcon sx={{ minWidth: 40, color: '#999' }}>
-//                   {category.icon}
-//                 </ListItemIcon>
-//                 <ListItemText
-//                   primary={category.name}
-//                   sx={{
-//                     '& .MuiListItemText-primary': {
-//                       fontSize: 14,
-//                       color: '#333',
-//                     },
-//                   }}
-//                 />
-//                 {category.hasSubmenu && (
-//                   <ChevronRight sx={{ color: '#999', fontSize: 20 }} />
-//                 )}
-//               </ListItemButton>
-//             </ListItem>
-//             {index < desktopCategories.length - 1 && (
-//               <Divider sx={{ borderColor: '#f0f0f0' }} />
-//             )}
-//           </React.Fragment>
-//         ))}
-//       </List>
-//     </Box>
-//   );
-
-//   // Mobile Drawer Content
-//   const mobileDrawer = (
-//     <Box sx={{ width: '100vw', height: '100vh', backgroundColor: '#fff' }}>
-//       {/* Close Button */}
-//       <Box sx={{ display: 'flex', justifyContent: 'flex-end', p: 1 }}>
-//         <IconButton onClick={handleDrawerToggle}>
-//           <CloseIcon />
-//         </IconButton>
-//       </Box>
-
-//       {/* Search Bar */}
-//       <Box sx={{ px: 2, pb: 2 }}>
-//         <Box
-//           sx={{
-//             display: 'flex',
-//             border: '1px solid #ddd',
-//             overflow: 'hidden',
-//           }}
-//         >
-//           <InputBase
-//             placeholder="Search in..."
-//             sx={{ flex: 1, px: 2, py: 1 }}
-//           />
-//           <Box
-//             sx={{
-//               backgroundColor: '#6bb013',
-//               color: 'white',
-//               display: 'flex',
-//               alignItems: 'center',
-//               justifyContent: 'center',
-//               px: 3,
-//             }}
-//           >
-//             <SearchIcon />
-//           </Box>
-//         </Box>
-//       </Box>
-
-//       {/* Tabs */}
-//       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-//         <Tabs
-//           value={tabValue}
-//           onChange={handleTabChange}
-//           sx={{
-//             '& .MuiTab-root': {
-//               flex: 1,
-//               color: '#666',
-//               fontWeight: 'normal',
-//             },
-//             '& .Mui-selected': {
-//               color: '#6bb013 !important',
-//             },
-//             '& .MuiTabs-indicator': {
-//               backgroundColor: '#6bb013',
-//             },
-//           }}
-//         >
-//           <Tab label="MENU" />
-//           <Tab label="CATEGORIES" />
-//         </Tabs>
-//       </Box>
-
-//       {/* Menu/Categories Content */}
-//       <Box sx={{ overflow: 'auto', height: 'calc(100vh - 200px)' }}>
-//         {tabValue === 0 ? (
-//           <List>
-//             {mobileMenuItems.map((item, index) => (
-//               <ListItem
-//                 key={item}
-//                 disablePadding
-//                 sx={{
-//                   borderBottom: '1px solid #f0f0f0',
-//                 }}
-//               >
-//                 <ListItemButton sx={{ py: 2 }}>
-//                   <ListItemText
-//                     primary={item}
-//                     sx={{
-//                       '& .MuiListItemText-primary': {
-//                         fontSize: 14,
-//                         color: item === 'LADIES WALLETS' ? '#6bb013' : '#666',
-//                         fontWeight: item === 'LADIES WALLETS' ? 'bold' : 'normal',
-//                       },
-//                     }}
-//                   />
-//                 </ListItemButton>
-//               </ListItem>
-//             ))}
-//           </List>
-//         ) : (
-//           <List>
-//             {mobileCategories.map((category) => (
-//               <ListItem
-//                 key={category}
-//                 disablePadding
-//                 sx={{
-//                   borderBottom: '1px solid #f0f0f0',
-//                 }}
-//               >
-//                 <ListItemButton sx={{ py: 2 }}>
-//                   <ListItemText
-//                     primary={category}
-//                     sx={{
-//                       '& .MuiListItemText-primary': {
-//                         fontSize: 14,
-//                         color: '#666',
-//                       },
-//                     }}
-//                   />
-//                 </ListItemButton>
-//               </ListItem>
-//             ))}
-//           </List>
-//         )}
-//       </Box>
-//     </Box>
-//   );
-
-//   return (
-//     <Box>
-//       {/* Desktop View - Sidebar (hidden on mobile) */}
-//       <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-//         {desktopSidebar}
-//       </Box>
-
-//       {/* Mobile View - Menu Button */}
-//       <Box sx={{ display: { xs: 'block', md: 'none' }, p: 2 }}>
-//         <IconButton
-//           onClick={handleDrawerToggle}
-//           sx={{
-//             backgroundColor: '#6bb013',
-//             color: 'white',
-//             '&:hover': {
-//               backgroundColor: '#5a9501',
-//             },
-//           }}
-//         >
-//           <MenuIcon />
-//         </IconButton>
-//       </Box>
-
-//       {/* Mobile Drawer */}
-//       <Drawer
-//         anchor="left"
-//         open={mobileOpen}
-//         onClose={handleDrawerToggle}
-//         sx={{
-//           display: { xs: 'block', md: 'none' },
-//           '& .MuiDrawer-paper': {
-//             width: '100%',
-//           },
-//         }}
-//       >
-//         {mobileDrawer}
-//       </Drawer>
-//     </Box>
-//   );
-// };
-
-// export default HeroSection;
-
 import React from "react";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -319,7 +6,7 @@ import Avatar from "@mui/material/Avatar";
 import MenuIcon from "@mui/icons-material/Menu";
 import WorkIcon from "@mui/icons-material/Work";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
-import { Button, List, Menu, MenuItem, Typography } from "@mui/material";
+import { Button, Grid, List, Menu, MenuItem, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Categories } from "../../DummyData/Categories";
 import ComputerIcon from "@mui/icons-material/Computer";
@@ -358,7 +45,7 @@ const HeroSection = () => {
     <>
       <Box className="flex gap-6">
         {/* Categories Box  */}
-        <Box className="ml-50">
+        <Box className="ml-50" sx={{ display: { xs: "none", md: "block" } }}>
           <List sx={{ width: "100%", maxWidth: 250 }}>
             {/* main categories  */}
             <ListItem sx={{ bgcolor: "#61ab01" }}>
@@ -382,7 +69,7 @@ const HeroSection = () => {
                   <WorkIcon sx={{ fontSize: 19, color: "#dedede" }} />
                 </Avatar>
               </ListItemAvatar>
-             <Typography sx={{fontSize:15}}>Glasses</Typography>
+              <Typography sx={{ fontSize: 15 }}>Glasses</Typography>
             </ListItem>
             {/* category 2  */}
             <ListItem>
@@ -395,7 +82,7 @@ const HeroSection = () => {
               <Button
                 endIcon={<ExpandMoreIcon />}
                 onClick={handleClick("electronics")}
-                sx={{ color: "#000", textTransform: "none",fontSize:15 }}
+                sx={{ color: "#000", textTransform: "none", fontSize: 15 }}
               >
                 Electronics
               </Button>
@@ -422,7 +109,7 @@ const HeroSection = () => {
               <Button
                 endIcon={<ExpandMoreIcon />}
                 onClick={handleClick("solar")}
-                sx={{ color: "#000", textTransform: "none",fontSize:15 }}
+                sx={{ color: "#000", textTransform: "none", fontSize: 15 }}
               >
                 Solar & Torch
               </Button>
@@ -448,7 +135,7 @@ const HeroSection = () => {
               <Button
                 endIcon={<ExpandMoreIcon />}
                 onClick={handleClick("watches")}
-                sx={{ color: "#000", textTransform: "none" ,fontSize:15}}
+                sx={{ color: "#000", textTransform: "none", fontSize: 15 }}
               >
                 Watches
               </Button>
@@ -475,7 +162,7 @@ const HeroSection = () => {
               <Button
                 endIcon={<ExpandMoreIcon />}
                 onClick={handleClick("wallets")}
-                sx={{ color: "#000", textTransform: "none",fontSize:15 }}
+                sx={{ color: "#000", textTransform: "none", fontSize: 15 }}
               >
                 Wallets
               </Button>
@@ -498,7 +185,7 @@ const HeroSection = () => {
                   <FavoriteBorderIcon sx={{ fontSize: 19, color: "#dedede" }} />
                 </Avatar>
               </ListItemAvatar>
-              <Typography sx={{fontSize:15}}>Fitness & Gym</Typography>
+              <Typography sx={{ fontSize: 15 }}>Fitness & Gym</Typography>
             </ListItem>
             {/* category 7  */}
             <ListItem>
@@ -509,7 +196,7 @@ const HeroSection = () => {
                   />
                 </Avatar>
               </ListItemAvatar>
-              <Typography sx={{fontSize:15}}>Health & Beauty</Typography>
+              <Typography sx={{ fontSize: 15 }}>Health & Beauty</Typography>
             </ListItem>
             {/* category 8 */}
             <ListItem>
@@ -518,7 +205,7 @@ const HeroSection = () => {
                   <CabinIcon sx={{ fontSize: 19, color: "#dedede" }} />
                 </Avatar>
               </ListItemAvatar>
-              <Typography sx={{fontSize:15}}>Travel & Outdoor</Typography>
+              <Typography sx={{ fontSize: 15 }}>Travel & Outdoor</Typography>
             </ListItem>
             {/* category 9  */}
             <ListItem>
@@ -529,7 +216,7 @@ const HeroSection = () => {
                   />
                 </Avatar>
               </ListItemAvatar>
-              <Typography sx={{fontSize:15}}>Winter Collection</Typography>
+              <Typography sx={{ fontSize: 15 }}>Winter Collection</Typography>
             </ListItem>
             {/* category 10  */}
             <ListItem>
@@ -538,7 +225,7 @@ const HeroSection = () => {
                   <WorkOutlineIcon sx={{ fontSize: 19, color: "#dedede" }} />
                 </Avatar>
               </ListItemAvatar>
-              <Typography sx={{fontSize:15}}>Backpack & Bag</Typography>
+              <Typography sx={{ fontSize: 15 }}>Backpack & Bag</Typography>
             </ListItem>
             {/* category 11  */}
             <ListItem>
@@ -553,7 +240,7 @@ const HeroSection = () => {
               <Button
                 endIcon={<ExpandMoreIcon />}
                 onClick={handleClick("other")}
-                sx={{ color: "#000", textTransform: "none",fontSize:15 }}
+                sx={{ color: "#000", textTransform: "none", fontSize: 15 }}
               >
                 Other Categories
               </Button>
@@ -571,128 +258,191 @@ const HeroSection = () => {
             </ListItem>
           </List>
         </Box>
-        {/* swiper  */}
-        <Box>
-          <Swiper
-            style={{ width: "1000px", height: "1000px" }}
-            className="mySwiper"
-            spaceBetween={20}
-            slidesPerView={1}
-            navigation
-            pagination={{ clickable: true }}
-            modules={[Navigation, Pagination]}
-          >
-            {/* glasses slide  */}
-            <SwiperSlide>
-              <Box sx={{ position: "relative", width: "100%", height: "100%" }}>
-                <img
-                  src={glasses}
-                  alt="Glasses"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    borderRadius: "8px",
-                  }}
-                />
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "10%",
-                    transform: "translateY(-50%)",
-                    color: "white",
-                    zIndex: 10,
-                  }}
-                >
-                  <Typography variant="h6" sx={{ fontWeight: 300, mb: 1 }}>
-                    Summer Eyewear
-                  </Typography>
-                  <Typography variant="h3" sx={{ fontWeight: "bold", mb: 0.5 }}>
-                    Streampunk Stylish
-                  </Typography>
-                  <Typography variant="h3" sx={{ fontWeight: "bold", mb: 2 }}>
-                    Sunglasses
-                  </Typography>
-                  <Typography
-                    variant="h4"
-                    sx={{ fontWeight: "bold", mb: 3, color: "#61ab01" }}
-                  >
-                    PKR 1850
-                  </Typography>
-                  <Button
-                    sx={{
-                      backgroundColor: "#61ab01",
-                      color: "white",
-                      px: 4,
-                      py: 2,
-                      borderRadius: 20,
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      "&:hover": { backgroundColor: "#5a9501" },
-                    }}
-                  >
-                    SHOP NOW
-                  </Button>
-                </Box>
-              </Box>
-            </SwiperSlide>
-            {/* cooking image  */}
-            <SwiperSlide>
-              <Box>
-                <Box
-                  sx={{ position: "relative", width: "100%", height: "100%" }}
-                >
-                  <img
-                    src={cookingimage}
-                    alt="Cooking"
-                    style={{
-                      width: "100%",
-                      height: "2000px",
-                      objectFit: "contain",
-                      borderRadius: "8px",
-                    }}
-                  />
-                </Box>
-                <Box
-                  sx={{
-                    position: "absolute",
-                    top: "50%",
-                    left: "10%",
-                    transform: "translateY(-50%)",
-                    color: "white",
-                    zIndex: 10,
-                  }}
-                >
-                  <Button
-                    sx={{
-                      backgroundColor: "#61ab01",
-                      color: "white",
-                      px: 10,
-                      py: 2,
-                      borderRadius: 20,
-                      fontSize: 16,
-                      fontWeight: "bold",
-                      border: "solid 1px black",
-                      "&:hover": { backgroundColor: "#5a9501" },
-                    }}
-                  >
-                    SHOP NOW
-                  </Button>
-                </Box>
-              </Box>
-            </SwiperSlide>
-          </Swiper>
-        </Box>
-        {/* side lamp  */}
-        <Box>
+{/* swiper  */}
+<Grid container spacing={2}>
+  <Grid item xs={12} md={9} lg={10}>
+    <Box
+      sx={{
+        width: "100%",
+        height: {
+          xs: "300px", // Mobile
+          sm: "400px", // Small tablets
+          md: "500px", // Medium screens
+          lg: "600px", // Large screens
+          xl: "700px", // Extra large screens
+        },
+        px: { xs: 1, sm: 2, md: 3 },
+      }}
+    >
+      <Swiper
+        style={{ width: "100%", height: "100%" }}
+        className="mySwiper"
+        spaceBetween={20}
+        slidesPerView={1}
+        navigation
+        pagination={{ clickable: true }}
+        modules={[Navigation, Pagination]}
+      >
+        {/* glasses slide  */}
+        <SwiperSlide>
           <Box
-            component="img"
-            src={lamp}
-            alt="lamp"
-            sx={{ width: 300, height: 300 }}
-          />
-        </Box>
+            sx={{ position: "relative", width: "100%", height: "100%" }}
+          >
+            <img
+              src={glasses}
+              alt="Glasses"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "8px",
+              }}
+            />
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: { xs: "5%", sm: "8%", md: "10%" },
+                transform: "translateY(-50%)",
+                color: "white",
+                zIndex: 10,
+              }}
+            >
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: 300,
+                  mb: { xs: 0.5, sm: 0.8, md: 1 },
+                  fontSize: { xs: "0.9rem", sm: "1rem", md: "1.25rem" },
+                }}
+              >
+                Summer Eyewear
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: "bold",
+                  mb: 0.5,
+                  fontSize: {
+                    xs: "1.5rem",
+                    sm: "2rem",
+                    md: "2.5rem",
+                    lg: "3rem",
+                  },
+                }}
+              >
+                Streampunk Stylish
+              </Typography>
+              <Typography
+                variant="h3"
+                sx={{
+                  fontWeight: "bold",
+                  mb: { xs: 1, sm: 1.5, md: 2 },
+                  fontSize: {
+                    xs: "1.5rem",
+                    sm: "2rem",
+                    md: "2.5rem",
+                    lg: "3rem",
+                  },
+                }}
+              >
+                Sunglasses
+              </Typography>
+              <Typography
+                variant="h4"
+                sx={{
+                  fontWeight: "bold",
+                  mb: { xs: 1.5, sm: 2, md: 3 },
+                  color: "#61ab01",
+                  fontSize: {
+                    xs: "1.2rem",
+                    sm: "1.5rem",
+                    md: "2rem",
+                    lg: "2.125rem",
+                  },
+                }}
+              >
+                PKR 1850
+              </Typography>
+              <Button
+                sx={{
+                  backgroundColor: "#61ab01",
+                  color: "white",
+                  px: { xs: 2, sm: 3, md: 4 },
+                  py: { xs: 1, sm: 1.5, md: 2 },
+                  borderRadius: 20,
+                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1rem" },
+                  fontWeight: "bold",
+                  "&:hover": { backgroundColor: "#5a9501" },
+                }}
+              >
+                SHOP NOW
+              </Button>
+            </Box>
+          </Box>
+        </SwiperSlide>
+        {/* cooking image  */}
+        <SwiperSlide>
+          <Box
+            sx={{ position: "relative", width: "100%", height: "100%" }}
+          >
+            <Box sx={{ width: "100%", height: "100%" }}>
+              <img
+                src={cookingimage}
+                alt="Cooking"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                  borderRadius: "8px",
+                }}
+              />
+            </Box>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "50%",
+                left: { xs: "5%", sm: "8%", md: "10%" },
+                transform: "translateY(-50%)",
+                color: "white",
+                zIndex: 10,
+              }}
+            >
+              <Button
+                sx={{
+                  backgroundColor: "#61ab01",
+                  color: "white",
+                  px: { xs: 3, sm: 6, md: 8, lg: 10 },
+                  py: { xs: 1, sm: 1.5, md: 2 },
+                  borderRadius: 20,
+                  fontSize: { xs: "0.875rem", sm: "1rem", md: "1rem" },
+                  fontWeight: "bold",
+                  border: "solid 1px black",
+                  "&:hover": { backgroundColor: "#5a9501" },
+                }}
+              >
+                SHOP NOW
+              </Button>
+            </Box>
+          </Box>
+        </SwiperSlide>
+      </Swiper>
+    </Box>
+  </Grid>
+  {/* side lamp - hidden on mobile, visible on medium+ screens */}
+  <Grid item md={3} lg={2} sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', justifyContent: 'center' }}>
+    <Box
+      component="img"
+      src={lamp}
+      alt="lamp"
+      sx={{ 
+        width: { md: 250, lg: 300 }, 
+        height: { md: 250, lg: 300 },
+        objectFit: 'contain'
+      }}
+    />
+  </Grid>
+</Grid>
       </Box>
     </>
   );
